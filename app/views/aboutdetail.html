@@ -1,6 +1,6 @@
 
 <div class="jumbotron">
-  <h1>About</h1>
+  <h1>About {{repo.name}}</h1>
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
     Always a pleasure scaffolding your apps.
@@ -9,10 +9,11 @@
 </div>
 
 <div class="row marketing">
-<h4>About</h4>
+<h4>About details</h4>
     <ul>
-        <li ng-repeat="repo in repos">
-            <a ng-href="#/about/{{repo.name}}" target="_self">{{repo.name}}</a>
+        <li ng-repeat="prop in repo">
+            <b>{{prop.name}}</b>
+            <pre>{{prop.value}}</pre>
         </li>
     </ul>
 </div>
