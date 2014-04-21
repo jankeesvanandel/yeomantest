@@ -12,12 +12,17 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'views/home.html'
         })
         .state('about', {
+            abstract: true,
             url: '/about',
+            template: '<ui-view/>'
+        })
+        .state('about.list', {
+            url: '',
             templateUrl: 'views/about.html',
             controller: 'AboutCtrl'
         })
-        .state('aboutdetail', {
-            url: '/about/:name',
+        .state('about.detail', {
+            url: '/:name',
             templateUrl: 'views/aboutdetail.html',
             controller: 'AboutDetailCtrl'
         })
@@ -25,8 +30,19 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/contact',
             templateUrl: 'views/contact.html',
             controller: 'ContactCtrl'
-        });
+        })
+        .state('profile', {
+            url: 'profile',
+            templateUrl: 'views/profile.html',
+            controller: 'ProfileCtrl'
+        })
+    ;
 }]);
+
+app.run(function($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+});
 
 app.service('GitHubService', function($http) {
     var self = {
