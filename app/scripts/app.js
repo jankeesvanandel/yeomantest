@@ -12,12 +12,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'views/home.html'
         })
         .state('about', {
-            abstract: true,
             url: '/about',
-            template: '<ui-view/>'
-        })
-        .state('about.list', {
-            url: '',
             templateUrl: 'views/about.html',
             controller: 'AboutCtrl'
         })
